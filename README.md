@@ -20,11 +20,11 @@ The OnlineExam Platform is a web-based application designed to facilitate the cr
 
 ## Screenshots
 
-OnlineExam - home 
+#### OnlineExam - home 
 ![Screenshot 1](https://i.pinimg.com/736x/9c/b0/45/9cb0450d1481436b35e74a955117c262.jpg)
-OnlineExam - login 
+#### OnlineExam - login 
 ![Screenshot 3](https://i.pinimg.com/736x/ff/63/a4/ff63a4313c9a41930755ce2ea41d9d8b.jpg)
-OnlineExam - exam id 
+#### OnlineExam - exam id 
 ![Screenshot 2](https://i.pinimg.com/736x/d0/16/a6/d016a67d1df59ef577912deaf6ad99e2.jpg)
 
 ## Installation
