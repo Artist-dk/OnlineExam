@@ -14,9 +14,13 @@ The OnlineExam Platform is a web-based application designed to facilitate the cr
 - **Scalability:** The platform is designed to scale, accommodating a large number of users and exams simultaneously.
 
 
-## Demo
+## Tech Stack
 
-[Play the game live](#)
+**Client:** HTML, CSS, JavaScript
+
+**Server:** pHp, MySQL
+
+
 
 ## Screenshots
 
@@ -29,6 +33,9 @@ The OnlineExam Platform is a web-based application designed to facilitate the cr
 
 ## Author
 Digambar Kumbhar
+#### 🚀 About Me
+I'm a full stack developer...
+
 
 ## Contact
 For inquiries or feedback, feel free to contact the project maintainer at [digambarckumbhar299@gmail.com] or connect on [LinkedIn](https://www.linkedin.com/in/digambar-kumbhar/).
