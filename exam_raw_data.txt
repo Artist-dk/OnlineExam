@@ -1,0 +1,179 @@
+
+    <!-- <script>
+        document.querySelector('#showQmap').addEventListener('click',showQmap);
+        function showQmap(){
+            document.querySelector('.qmap').classList.toggle('hidden');
+        }
+        let thisQD = [];
+        const questionData = [
+            {
+                number: 1,
+                title: "Question",
+                text: "What is the capital of France?",
+                options: ["Paris", "London", "Berlin","Madrid"],
+                qid: '1',
+                oid: ['1','2','3','4']
+            },
+            {
+                number: 2,
+                title: "Question",
+                text: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter","Saturn"],
+                qid: '2',
+                oid: ['5','6','7','8']
+            },
+            {
+                number: 3,
+                title: "Question",
+                text: " Who wrote the play \"Romeo and Juliet\"?",
+                options: ["William Shakespeare", "Jane Austen", "Charles Dickens","George Orwell"],
+                qid: '3',
+                oid: ['9','10','11','12']
+            },
+            {
+                number: 4,
+                title: "Question",
+                text: "What is the chemical symbol for gold?",
+                options: ["Go", "Ag", "Ge", "Au"],
+                qid: '4',
+                oid: ['13','14','15','16']
+            },
+            
+            // Add more questions here
+        ];
+        console.log(JSON.stringify(questionData))
+
+        let currentQuestionIndex = 0;
+
+        // Function to display the current question
+        function displayQuestion() {
+            console.log('displayQuestion')
+            const question = questionData[currentQuestionIndex];
+            console.log(question)
+            document.getElementById("questionNumber").textContent = `Question no: ${question.number}`;
+            document.getElementById("questionText").textContent = question.text;
+            document.getElementById("questionText").dataset.qid = question.qid;
+
+            const options = question.options;
+            const oid = question.oid;
+            const inputFields = document.querySelectorAll('input[type="radio"]');
+            
+            document.querySelector('.qmap').innerHTML = '';
+            
+            document.getElementById('formDataOptions').innerHTML = '';
+            console.log(document.getElementById('formDataOptions'))
+            options.forEach((input, index) => {
+                // console.log("joker")
+                // console.log(input)
+                // console.log(index)
+                // <div class="input-field">
+                //         <input type="radio" name="q1" value="Paris"> 
+                //         <label for="ans1">01</label>
+                //     </div>
+                
+                // <input type="radio" name="correctOption" id="ans4" value="2"> 
+                // <label class="radio-wrapper" for="ans4"> Correct</label>
+                var a = document.createElement('div');
+                a.setAttribute('class','input-field');
+                var b = document.createElement('input');
+                b.setAttribute('type','radio');
+                b.setAttribute('name','option');
+                var id = 'ans'+index;
+                b.setAttribute('id',id);
+                b.setAttribute('value',`${oid[index]}`);
+                var c = document.createElement('label');
+                c.setAttribute('class','radio-wrapper');
+                c.setAttribute('for',id);
+                c.appendChild(document.createTextNode(`${options[index]}`));
+                a.appendChild(b);
+                a.appendChild(c);
+                document.getElementById('formDataOptions').appendChild(a);
+                console.log(a)
+                // input.value = oid[index];
+                // console.log(options[index]);
+                // console.log(`${(index + 1).toString().padStart(2, "0")+" "+options[index]}`)
+                // console.log(input.nextElementSibling);
+                // input.nextElementSibling.innerHTML = `${options[index]}`;
+                var a = document.createElement('div');
+                // console.log(index == currentQuestionIndex)
+                a.setAttribute('class', `qn ${index == currentQuestionIndex?'active':''}`);
+                a.appendChild(document.createTextNode([1+index]));
+                document.querySelector('.qmap').appendChild(a);
+            });
+
+            console.log(thisQD);
+        // <div class="qn">01</div>
+        }
+        document.getElementById("prevQuestion").addEventListener("click", function () {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        });
+        document.getElementById("nextQuestion").addEventListener("click", function () {
+            if (currentQuestionIndex < questionData.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            }
+        });
+        document.getElementById("submitAnswer").addEventListener("click", function (e) {
+            e.preventDefault();
+            const answer = document.querySelector('input[name="option"]:checked').value;
+
+            // Perform AJAX request to submit the answer
+            var xhr = new XMLHttpRequest();
+            xhr.open('post','exam.php',true);
+            xhr.onload = function() {
+                console.log(this.responseText);
+            }
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            // var a = "msg="+a+"&msg_type=t";
+
+            var data = new Object();
+            data.answer = answer;
+            data.qid = document.getElementById("questionText").dataset.qid;
+            console.log(data)
+            console.log(JSON.stringify(data));
+            // console.log(JSON.stringify(data));
+            // console.log(JSON.stringify({ answer }));
+            // xhr.send('data='+JSON.stringify({ answer }));
+            xhr.send('data='+JSON.stringify(data));
+            // window.print();
+
+            // fetch("exam.php", {
+            //     method: "POST",
+            //     body: JSON.stringify({ answer }),
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            // })
+            // .then((response) => response.json())
+            // .then((data) => {
+            //     if (data.success) {
+            //         alert("Your answer has been submitted. Your score is " + data.score);
+            //     } else {
+            //         alert(data.message);
+            //     }
+            // })
+            // .catch((error) => {
+            //     console.error("Error: " + error);
+            // });
+        });
+        window.onload = () => {
+            displayQuestion(); // Display the first question on page load
+        }
+    </script> -->
+
+
+
+
+
+
+    addquestion.html
+    createTest.html
+    exam.html
+    index.html
+    result.html
+    signin.html
+    signup.html
+    startExam.html

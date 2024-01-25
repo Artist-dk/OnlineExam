@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="joker.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Online<span>Quiz</span></h1>
+        </div>
+        <div class="nav">
+            <a href="http://">Home</a>
+            <a href="http://">About</a>
+            <a href="http://">Contact</a>
+        </div>
+    </div>
+    <div class="qmap-control">
+        <button id="prevQuestion">Prev</button>
+        <button id="showQmap">Qmap</button>
+        <button id="nextQuestion">Next</button>
+    </div>
+    <div class="qmap">
+        <div class="qn">01</div>
+        <div class="qn">02</div>
+        <div class="qn">03</div>
+        <div class="qn">04</div>
+        <div class="qn">05</div>
+        <div class="qn">06</div>
+        <div class="qn">07</div>
+        <div class="qn">08</div>
+        <div class="qn">09</div>
+        <div class="qn">10</div>
+        <div class="qn">11</div>
+        <div class="qn">12</div>
+        <div class="qn">13</div>
+        <div class="qn">14</div>
+        <div class="qn">15</div>
+        <div class="qn">16</div>
+        <div class="qn">17</div>
+        <div class="qn">18</div>
+        <div class="qn">19</div>
+        <div class="qn">20</div>
+        <div class="qn">21</div>
+        <div class="qn">22</div>
+        <div class="qn">23</div>
+        <div class="qn">24</div>
+        <div class="qn">25</div>
+        <div class="qn">26</div>
+        <div class="qn">27</div>
+        <div class="qn">28</div>
+        <div class="qn">29</div>
+        <div class="qn">30</div>
+    </div>
+    <div class="main">
+        <div class="exam-card">
+            <div class="card-head">
+                <h2 id="questionTitle">Question</h2>
+                <p id="questionText">What is the capital of France?</p>
+            </div>
+            <div class="card-main">
+                <h1>Answer:</h1>
+                <form id="answerForm">
+                    <div class="input-field">
+                        <input type="radio" name="q1" value="Paris"> Paris<br>
+                        <label for="ans1">01</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="radio" name="q1" value="London"> London<br>
+                        <label for="ans2">02</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="radio" name="q1" value="Berlin"> Berlin<br>
+                        <label for="ans3">03</label>
+                    </div>
+                    <div class="center">
+                        <!-- <button class="larg" type="submit">Submit Answer</button> -->
+                        <button class="larg"  id="submitAnswer">Submit Answer</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <p id="questionNumber">Question no: 01</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copywrite &copy; 2023
+    </div>
+    <script>
+        
+        const questionData = [
+            {
+                number: 1,
+                title: "Question",
+                text: "What is the capital of France?",
+                options: ["Paris", "London", "Berlin"],
+            },
+            // Add more questions here
+        ];
+
+        let currentQuestionIndex = 0;
+
+        // Function to display the current question
+        function displayQuestion() {
+            const question = questionData[currentQuestionIndex];
+            document.getElementById("questionNumber").textContent = `Question no: ${question.number}`;
+            document.getElementById("questionTitle").textContent = question.title;
+            document.getElementById("questionText").textContent = question.text;
+
+            const options = question.options;
+            const inputFields = document.querySelectorAll('input[type="radio"]');
+            inputFields.forEach((input, index) => {
+                input.value = options[index];
+                input.nextElementSibling.textContent = `${(index + 1).toString().padStart(2, "0")}`;
+            });
+        }
+
+        document.getElementById("prevQuestion").addEventListener("click", function () {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        });
+
+        document.getElementById("nextQuestion").addEventListener("click", function () {
+            if (currentQuestionIndex < questionData.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            }
+        });
+
+        document.getElementById("submitAnswer").addEventListener("click", function (e) {
+            e.preventDefault();
+            const answer = document.querySelector('input[name="q1"]:checked').value;
+
+            // Perform AJAX request to submit the answer
+            fetch("submit_answer.php", {
+                method: "POST",
+                body: JSON.stringify({ answer }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert("Your answer has been submitted. Your score is " + data.score);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+            });
+        });
+
+        displayQuestion(); // Display the first question on page load
+    </script>
+</body>
+</html>

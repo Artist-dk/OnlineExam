@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="joker.css"> <!-- Add this line to link the CSS file -->
+    <title>Create Test</title>
+</head>
+<body>
+    <h1>Create a Test</h1>
+    <form id="testForm">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required><br><br>
+
+        <label for="testDate">Test Date:</label>
+        <input type="date" id="testDate" name="testDate" required><br><br>
+
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" name="duration" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        
+        <label for="testId">Test Id:</label>
+        <input type="text" id="testId" name="testId" required readonly="true"><br><br>
+
+        <input type="submit" value="Create Test">
+    </form>
+
+    <script>
+        document.getElementById("testForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const subject = document.getElementById("subject").value;
+            const testDate = document.getElementById("testDate").value;
+            const duration = document.getElementById("duration").value;
+            const description = document.getElementById("description").value;
+            
+            const data = {
+                subject: subject,
+                testDate: testDate,
+                duration: duration,
+                description: description
+            };
+            console.log(data)
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "createTest.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            xhr.onload = function () {
+                console.log(xhr.responseText)
+                // const response = JSON.parse(xhr.responseText);
+                // console.log(response);
+            };
+            xhr.send(JSON.stringify(data));
+        });
+        // window.onload = setTimeout(() => {
+        //     const xhr = new XMLHttpRequest();
+        //     xhr.open("POST", "getTestId.php", true);
+        //     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //     xhr.onload = () => {
+        //         console.log(xhr.responseText)
+        //         // const response = JSON.parse(xhr.responseText);
+        //         // console.log(response);
+        //         console.log('getTestId');
+        //     };
+        // }, 1000);
+        fetch('getTestId.php')
+        .then(x => x.text())
+        .then(y => {
+            if(y != 0) {
+                document.getElementById('testId').value = y;
+            }
+        });
+    </script>
+</body>
+</html>

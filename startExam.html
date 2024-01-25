@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - OnlineExamination</title>
+    <link rel="stylesheet" href="joker.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Online<span>Quiz</span></h1>
+        </div>
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="ac-card">
+            <div class="ac-card-header">
+                <h1>Start Exam</h1>
+            </div>
+            <div class="ac-card-main">
+                <form id="signupForm">
+                    <div class="input-field">
+                        <label for="fname" style="padding: 5px;">Exam Id:</label>
+                        <input type="text" id="examId" name="examId" required>
+                    </div>
+                    <div class="center">
+                        <a href="">
+                            <button class="larg" type="submit" >Start Exam</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="ac-card-footer">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copywrite &copy; 2023
+    </div>
+    
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch("startExam.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        window.location.href = "exam.html";
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error: " + error);
+                });
+        });
+    </script>
+</body>
+</html>

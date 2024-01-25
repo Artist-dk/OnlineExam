@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result - Online Examination</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="joker.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Online<span>Quiz</span></h1>
+        </div>
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="main">
+        
+
+        <div class="result-card">
+            <!-- Certificate content goes here -->
+            
+            <div class="result-header">
+                <p style="font-size: 40px; font-weight: 300;">CERTIFICATE</p>
+            </div>
+            <div class="result-content">
+                <p>This is to certify That</p>
+                <p><strong><span id="studentName" style="font-size: 44px;">...</span></strong></p>
+                <p>Has attended the assessment for the skill </p>
+                <p><strong></strong> <span id="subject">... </span></p>
+                <p><strong>Date:</strong> <span id="date">... </span></p>
+                <p><strong>Percentage:</strong> <span id="userScore">...</span></p>
+                <p><strong>Result:</strong> <span id="userStatus">...</span></p>
+            </div>
+            <div class="result-footer">
+                <p id="resultMessage"></p>
+            </div>
+        </div>
+    
+        <div class="center">
+            <button id="downloadButton">Download Certificate as Print</button>
+        </div>
+        <!-- Button to download certificate as print -->
+    
+        <!-- JavaScript to capture and download the certificate -->
+        <script>
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                // Select the div element to be captured (result-card)
+                const divToCapture = document.querySelector('.result-card');
+    
+                // Use html2canvas to capture the div's content
+                html2canvas(divToCapture).then(function(canvas) {
+                    // Create a temporary link to download the image
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = 'certificate.png'; // Change the filename as needed
+                    link.click();
+                });
+            });
+        </script>
+
+
+    </div>
+    <div class="footer">
+        Copywrite &copy; 2023
+    </div>
+    <script>
+        
+        fetch("result.php", {
+            method: "POST",
+            // body: formData,
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                console.log(data.score)
+                console.log(data.percentageScore)
+                console.log(data.status)
+                console.log(data.date)
+                console.log(data.subject)
+                console.log(data.studentName)
+                setTimeout(function() {
+                    const userScore = data.percentageScore; // Replace with the actual user's score
+                    const passPercentage = data.passPercentage; // Set the passing percentage
+                
+                    const userScoreElement = document.getElementById('userScore');
+                    const userStatusElement = document.getElementById('userStatus');
+                    const resultMessageElement = document.getElementById('resultMessage');
+                    const certificateLinkElement = document.getElementById('certificateLink');
+                    const dateElement = document.getElementById('date');
+                    const subjectElement = document.getElementById('subject');
+                
+                    userScoreElement.textContent = `${userScore}%`;
+                
+                    if (userScore >= passPercentage) {
+                        userStatusElement.textContent = data.status;
+                        resultMessageElement.textContent = data.resultMsg;
+                        dateElement.textContent = data.date;
+                        subjectElement.textContent = data.subject;
+                        // Replace 'certificate.pdf' with the actual path to the certificate file
+                        document.getElementById('studentName').textContent=data.studentName.toUpperCase();
+                        certificateLinkElement.href = 'certificate.pdf';
+                    } else {
+                        userStatusElement.textContent = data.status;
+                        dateElement.textContent = data.date;
+                        subjectElement.textContent = data.subject;
+                        resultMessageElement.textContent = data.resultMsg;
+                        document.getElementById('studentName').textContent=data.studentName.toUpperCase();
+                        // certificateLinkElement.style.display = 'none'; // Hide certificate download link
+                    }
+                }, 2000); // Simulated delay for fetching results (replace with actual backend logic)
+
+                // window.location.href = "signin.html";
+            } else {
+                alert(data.message);
+            }
+        })
+        // .catch((error) => {
+        //     console.error("Error: " + error);
+        // });
+
+        // setTimeout(function() {
+        //     const userScore = 75; // Replace with the actual user's score
+        //     const passPercentage = 70; // Set the passing percentage
+
+        //     const userScoreElement = document.getElementById('userScore');
+        //     const userStatusElement = document.getElementById('userStatus');
+        //     const resultMessageElement = document.getElementById('resultMessage');
+        //     const certificateLinkElement = document.getElementById('certificateLink');
+
+        //     userScoreElement.textContent = `${userScore}%`;
+
+        //     if (userScore >= passPercentage) {
+        //         userStatusElement.textContent = 'Passed';
+        //         resultMessageElement.textContent = 'Congratulations! You have successfully passed the test.';
+        //         // Replace 'certificate.pdf' with the actual path to the certificate file
+        //         certificateLinkElement.href = 'certificate.pdf';
+        //     } else {
+        //         userStatusElement.textContent = 'Failed';
+        //         resultMessageElement.textContent = 'Unfortunately, you did not pass the test.';
+        //         certificateLinkElement.style.display = 'none'; // Hide certificate download link
+        //     }
+        // }, 2000); // Simulated delay for fetching results (replace with actual backend logic)
+    </script>
+</body>
+</html>

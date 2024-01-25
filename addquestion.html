@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Questions</title>
+    <link rel="stylesheet" href="joker.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Online<span>Quiz</span></h1>
+        </div>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="exam-card">
+            <div class="card-head">
+                <h2>Add New Question</h2>
+            </div>
+            <div class="card-main">
+                <form id="questionForm">
+                    <div class="input-field">
+                        <input type="text" id="testId" name="testId" required placeholder="Test id">
+                    </div>
+                    <label for="options">Question:</label>
+                    <div class="input-field">
+                        <textarea id="questionText" name="questionText" rows="4" required></textarea>
+                    </div><br><br>
+                    <label for="options">Options:</label>
+                    <div class="input-field">
+                        <input type="text" id="option1" name="option1" required placeholder="Option 1">
+                            <input type="radio" name="correctOption" id="ans1" value="1"> 
+                            <label class="radio-wrapper" for="ans1" required > Correct</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="option2" name="option2" required placeholder="Option 2">
+                            <input type="radio" name="correctOption" id="ans2" value="2"> 
+                            <label class="radio-wrapper" for="ans2" required > Correct</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="option3" name="option3" required placeholder="Option 3">
+                            <input type="radio" id="ans3" name="correctOption" value="3"> 
+                            <label for="ans3" class="radio-wrapper" required > Correct</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="option4" name="option4" required placeholder="Option 4">
+                        <input type="radio" name="correctOption" id="ans4" value="4"> 
+                        <label class="radio-wrapper" for="ans4" required > Correct</label>
+                    </div>
+                    <div class="center">
+                        <button class="larg" type="button" id="addQuestion">Add Question</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <p>Add a new question to the database</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2023
+    </div>
+    <script>
+        document.getElementById("addQuestion").addEventListener("click", function () {
+            // Collect data from the form
+            const testId = document.getElementById("testId").value;
+            const questionText = document.getElementById("questionText").value;
+            const option1 = document.getElementById("option1").value;
+            const option2 = document.getElementById("option2").value;
+            const option3 = document.getElementById("option3").value;
+            const option4 = document.getElementById("option4").value;
+            const correctOption = document.querySelector('input[name="correctOption"]:checked').value;
+
+
+            // Create an object to send via Ajax
+            const questionData = {
+                testId: testId,
+                questionText: questionText,
+                option1: option1,
+                option2: option2,
+                option3: option3,
+                option4: option4,
+                correctOption: correctOption,
+            };
+            console.log(questionData.questionText)
+            var data = JSON.stringify(questionData);
+            // Perform an AJAX request to send the data to the server
+            // fetch("addquestion.php", {
+            //     method: "POST",
+            //     body: data,
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            // })
+            // .then((response) => response.json())
+            // .then((data) => {
+            //     if (data.success) {
+            //         alert("Question added successfully.");
+            //         // Optionally, you can reset the form
+            //         document.getElementById("questionForm").reset();
+            //     } else {
+            //         alert("Error: " + data.message);
+            //     }
+            // })
+            // // .catch((error) => {
+            // //     console.error("Error: " + error);
+            // //     document.write(error);
+            // // });
+            
+            fetch("addquestion.php",
+            {
+                method: "POST",
+                body: data,
+                headers: {
+                    "Content-Type": "application/json",
+            }})
+            .then(x => x.json())
+            .then(y => {
+                if(y.success) {
+                    document.getElementById("questionForm").reset();
+                    console.log(y)
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>

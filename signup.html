@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - OnlineExamination</title>
+    <link rel="stylesheet" href="joker.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Online<span>Quiz</span></h1>
+        </div>
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="ac-card">
+            <div class="ac-card-header">
+                <h1>Sign In</h1>
+            </div>
+            <div class="ac-card-main">
+                <form id="signupForm">
+                    <div class="input-field">
+                        <label for="fname" style="padding: 5px;">First Name:</label>
+                        <input type="text" id="fname" name="fname" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="lname" style="padding: 5px;">Last Name:</label>
+                        <input type="text" id="lname" name="lname" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="phone" style="padding: 5px;">Phone:</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="email" style="padding: 5px;">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="username" style="padding: 5px;">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="password" style="padding: 5px;">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="confirmPassword" style="padding: 5px;">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="center">
+                        <a href="">
+                            <button class="larg" type="submit" >Sign Up</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="ac-card-footer">
+                <p>Already have an account? <a href="signin.html">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copywrite &copy; 2023
+    </div>
+    
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch("signup.php", {
+                method: "POST",
+                body: formData,
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    window.location.href = "signin.html";
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+            });
+        });
+    </script>
+</body>
+</html>

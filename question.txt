@@ -1,0 +1,45 @@
+
+Question 1
+What is the capital of France?
+
+Options:
+
+Paris (Correct)
+London
+Berlin
+Madrid
+
+
+Question 2
+Which planet is known as the Red Planet?
+
+Options:
+
+Venus
+Mars (Correct)
+Jupiter
+Saturn
+
+
+
+Question
+Question Text: Who wrote the play "Romeo and Juliet"?
+
+Options:
+
+William Shakespeare (Correct)
+Jane Austen
+Charles Dickens
+George Orwell
+
+
+
+Question
+Question Text: What is the chemical symbol for gold?
+
+Options:
+
+Go
+Ag
+Ge
+Au (Correct)

@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+/* Global styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+}
+/* Header styling */
+.header {
+    background-color: #223;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: solid 1px #ff000050;
+}
+.title {
+    margin: auto 20px;
+}
+.title h1 {
+    font-size: 24px;
+    color: #889;
+}
+.title h1 span {
+    font-size: 32px;
+    color: #08f;
+}
+.nav a {
+    text-decoration: none;
+    color: #aaa;
+    padding: 10px 15px;
+}
+.nav a:hover {
+    color: #0f0;
+    background-color: #445;
+    border-radius: 5px;
+}
+/* Main content styling */
+.main {
+    padding: 20px;
+    /* display: flex;
+    justify-content: space-between; */
+    min-height:calc( 100vh - 150px );
+}
+.welcome {
+    flex: 1;
+    padding: 20px;
+    background-color: #112;
+    margin-right: 10px;
+    margin: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+.welcome h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.welcome h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.center {
+    text-align: center;
+    margin-top: 10px;
+}
+.center a button {
+    background-color: #0088ffa0 !important;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+.center a button:hover {
+    background-color: #445;
+}
+/* Footer styling */
+.footer {
+    background-color: #111122;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+/* Main content styling (same as your main CSS) */
+.main {
+    padding: 20px;
+    /* display: flex; */
+    justify-content: space-between;
+}
+.ac-card {
+    background-color: #112;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.ac-card-header {
+    padding: 20px;
+    background: #223;
+    text-align: center;
+}
+.ac-card-main {
+    padding: 50px 20px;
+    background: #112;
+}
+.ac-card-main .input-field {
+    padding: 10px;
+}
+.ac-card-main .input-field label{
+    display: block;
+}
+.ac-card-main .input-field input{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ac-card-footer {
+    padding: 20px;
+    background: #223;
+    text-align: center;
+}
+.signin h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-size: 14px;
+    /* margin-bottom:3px; */
+    /* margin-left: 8px; */
+}
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='number'],
+input[type='text']{
+    padding: 15px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #222;
+    border-radius: 4px;
+    background: #334;
+    font-size: 16px;
+    outline: none;
+}
+button, input[type='submit'], textarea {
+    background: #334;
+    cursor: pointer;
+    box-shadow: 0 0 5px #112;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    width: fit-content;
+    border: solid 2px transparent;
+}
+textarea {
+    width: 100%;
+    resize: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+button:hover {
+    border: solid 2px #0088ff;
+    color: #0088ff;
+}
+button:active {
+    background: #445;
+}
+.radio-wrapper {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    border: solid 2px transparent;
+    cursor: pointer;
+}
+.radio-wrapper:hover {
+    color: #0088ff;
+    border: solid 2px #0088ff;
+}
+/* Question Map Control styling */
+.qmap-control {
+    background-color: #112;
+    text-align: center;
+}
+/* Question Map styling */
+.qmap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #223;
+}
+.qn {
+    background-color: #112;
+    color: #fff;
+    border: 1px solid #334;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.active {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+/* Exam card styling */
+.exam-card {
+    background-color: #112;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.exam-card .card-head {
+    padding: 20px;
+    background-color: #223;
+    color: #fff;
+}
+.exam-card .card-head h2 {
+    font-size: 20px;
+}
+.exam-card .card-head p {
+    font-size: 14px;
+}
+.exam-card .card-main {
+    padding: 20px;
+}
+.exam-card .card-main h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.exam-card .card-main input[type=radio] {
+    width: fit-content;
+    display: inline-block;
+}
+form {
+    text-align: left;
+}
+label {
+    margin-right: 10px;
+    display: inline-block;
+}
+.exam-card .input-field {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    /* margin-left: 20px; */
+}
+
+input[type='radio'] {
+  /* Hide the default radio button */
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom appearance for the radio button */
+input[type='radio'] + label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3498db; /* Border color */
+  border-radius: 50%; /* Make it round */
+  margin-right: 8px; /* Spacing between the radio button and label */
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Style the radio button when checked */
+input[type='radio']:checked + label::before {
+  background-color: #3498db; /* Background color when checked */
+}
+
+/* Add a dot inside the radio button to indicate selection */
+input[type='radio']:checked ~ label::before::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: white; /* Color of the dot */
+  border-radius: 50%;
+  margin: 3px; /* Adjust the position of the dot */
+}
+
+
+input[type="submit"] {
+    width: 300px;
+}
+.card-footer {
+    background-color: #223;
+    padding: 10px;
+    text-align: center;
+}
+.larg  {
+    padding: 20px 40px !important;
+    margin: 10px auto;
+}
+p {
+    color: #ddd;
+}
+.hidden {
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Result card styling for a certificate-like design */
+.result-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 4px solid #ffffff; /* Certificate border color */
+    background: #fff; /* Replace with your certificate background image */
+    background-image: url('certificatebg.jpg'); /* Replace with your certificate background image */
+    background-size: cover;
+    color: #fff !important; /* Certificate text color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.result-header {
+    text-align: center;
+    color: #fff !important; /* Certificate text color */
+    padding: 20px;
+}
+
+.result-header h1 {
+    font-size: 44px;
+    color: #fff; /* Certificate header color */
+}
+
+.result-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.result-content p {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff !important; /* Certificate text color */
+}
+.result-content strong {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff !important; /* Certificate text color */
+}
+.result-content span {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff !important; /* Certificate text color */
+}
+
+.result-footer {
+    text-align: center;
+    color: #fff !important; /* Certificate text color */
+    padding: 20px;
+}
+
+.result-footer p {
+    font-size: 18px;
+    color: #fff !important; /* Certificate text color */
+}
+.result-footer strong {
+    color: #fff !important; /* Certificate text color */
+}
+
+#certificateLink {
+    background-color: #0088ff;
+    color: #ffff !important; /* Certificate text color */
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#certificateLink:hover {
+    background-color: #0066cc; /* Hover color for the certificate link */
+}
+
