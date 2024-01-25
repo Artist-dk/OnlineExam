@@ -27,22 +27,6 @@ The OnlineExam Platform is a web-based application designed to facilitate the cr
 #### OnlineExam - exam id 
 ![Screenshot 2](https://i.pinimg.com/736x/d0/16/a6/d016a67d1df59ef577912deaf6ad99e2.jpg)
 
-## Installation
-
-Get started with TypeCraft by following these simple steps:
-
-```bash
-# Clone the repository
-git clone https://github.com/Artist-dk/OnlineExam.git
-
-# Change directory
-cd IntroGenie
-
-# Install dependencies
-npm install
-
-```
-
 ## Author
 Digambar Kumbhar
 
